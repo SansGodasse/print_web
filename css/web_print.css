@@ -1,6 +1,6 @@
 
 @media print {
-	label {
+	.not-printable {
 		display: none;
 	}
 }
