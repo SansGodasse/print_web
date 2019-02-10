@@ -13,11 +13,21 @@ pasteAreaElt.addEventListener('paste', handlePaste);
  */
 function handlePaste(evt) {
 
+	var stringsToRemove = [
+		'\n',
+		'\n',
+		'<!--StartFragment-->',
+		'<!--EndFragment-->',
+		'<html>',
+		'</html>',
+		'<body>',
+		'</body>'
+	];
 	var pasteAreaElt = document.getElementById("paste-area");
 
 	pasteAreaContent = pasteAreaElt.value;
 	pasteContent = catchPaste(evt);
-	pasteContent = stripContent(pasteContent);
+	pasteContent = stripContent(pasteContent, stringsToRemove);
 
 	var caretPosition = this.selectionStart;
 
@@ -42,21 +52,16 @@ function handlePaste(evt) {
 	}
 
 	/**
-	 * Remove html and body tags
+	 * Remove strings from the paste content
 	 * 
 	 * @param  {[type]} pasteContent [description]
 	 * @return {[type]}              [description]
 	 */
-	function stripContent(pasteContent) {
+	function stripContent(pasteContent, stringsToRemove) {
 
-		pasteContent = pasteContent.replace('\n', '');
-		pasteContent = pasteContent.replace('\n', '');
-		pasteContent = pasteContent.replace('<!--StartFragment-->', '');
-		pasteContent = pasteContent.replace('<!--EndFragment-->', '');
-		pasteContent = pasteContent.replace('<html>', '');
-		pasteContent = pasteContent.replace('</html>', '');
-		pasteContent = pasteContent.replace('<body>', '');
-		pasteContent = pasteContent.replace('</body>', '');
+		for (var i = 0, size = stringsToRemove.length; i < size; i++) {
+			pasteContent = pasteContent.replace(stringsToRemove[i], '');
+		}
 
 		return pasteContent;
 	}
