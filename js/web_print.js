@@ -49,6 +49,8 @@ function handlePaste(evt) {
 	 */
 	function stripContent(pasteContent) {
 
+		pasteContent = pasteContent.replace('\n', '');
+		pasteContent = pasteContent.replace('\n', '');
 		pasteContent = pasteContent.replace('<!--StartFragment-->', '');
 		pasteContent = pasteContent.replace('<!--EndFragment-->', '');
 		pasteContent = pasteContent.replace('<html>', '');
