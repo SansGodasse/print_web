@@ -1,3 +1,3 @@
 <?php
 
-require 'views/printView.php';
+require '../views/printView.php';

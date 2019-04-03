@@ -8,8 +8,8 @@
 
         <title>Imprimer du web</title>
 
-        <link href="css/style.css" rel="stylesheet" />
-        <link href="css/web_print.css" rel="stylesheet" />
+        <link href="/public/css/style.css" rel="stylesheet" />
+        <link href="/public/css/web_print.css" rel="stylesheet" />
     </head>
     
     <body>
