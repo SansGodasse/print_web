@@ -16,6 +16,7 @@ ob_start();
         <button class="btn not-printable" type="button" onclick="webPrinter.erase();">Erase</button>
         <button class="btn not-printable" type="button" onclick="webPrinter.show();">Show</button>
         <button class="btn not-printable" type="button" id="convert-markdown-btn">Convert Markdown to HTML</button>
+        <button class="btn not-printable" type="button" id="paste-handler-activation-btn"></button>
     </div>
 
     <div id="printer-preview"></div>
@@ -26,16 +27,15 @@ ob_start();
     <script>
 
 
-        let printerPreviewElement = document.getElementById('printer-preview'),
-            pasteAreaElement = document.getElementById("paste-area"),
+        let pasteAreaElement = document.getElementById("paste-area"),
             webPrinter = new WebPrinter(
-                printerPreviewElement,
+                document.getElementById('printer-preview'),
                 pasteAreaElement,
                 document.getElementById("convert-markdown-btn")
             ),
             pasteHandler = new PasteHandler(
-                printerPreviewElement,
-                pasteAreaElement
+                pasteAreaElement,
+                document.getElementById("paste-handler-activation-btn")
             );
     </script>
 

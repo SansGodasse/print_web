@@ -15,7 +15,9 @@ function WebPrinter(
 
             webPrinter.printerPreviewElement = printerPreviewElement;
             webPrinter.pasteAreaElement = pasteAreaElement;
+
             convertMarkdownButtonElement.addEventListener("click", webPrinter.convertMarkdown);
+            webPrinter.pasteAreaElement.addEventListener("keyup", webPrinter.show);
         },
 
         erase: function () {

@@ -1,11 +1,11 @@
-function PasteHandler(printerPreviewElement, pasteAreaElement) {
+function PasteHandler(pasteAreaElement, activationButtonElement) {
 
 	let pasteHandler = {
 
 		pasteAreaElement: null,
-		printerPreviewElement: null,
+        activationButtonElement: null,
 
-		init: function (printerPreviewElement, pasteAreaElement) {
+		init: function (pasteAreaElement, activationButtonElement) {
 
 			/**
 			 * Insert a string in a string
@@ -18,12 +18,33 @@ function PasteHandler(printerPreviewElement, pasteAreaElement) {
 				return firstPart + stringToInsert + lastPart;
 			};
 
-			pasteHandler.printerPreviewElement = printerPreviewElement;
-
 			pasteHandler.pasteAreaElement = pasteAreaElement;
-			pasteHandler.pasteAreaElement.addEventListener('keyup', pasteHandler.refreshPrinterPreview);
-			pasteHandler.pasteAreaElement.addEventListener('paste', pasteHandler.handlePaste);
+            pasteHandler.activationButtonElement = activationButtonElement;
+            pasteHandler.activationButtonElement.addEventListener("click", () => {
+
+                if (activationButtonElement.classList.contains("activated")) {
+                    pasteHandler.deactivate();
+
+                } else {
+                    pasteHandler.activate();
+                }
+            });
+            pasteHandler.activate();
 		},
+
+        activate: function () {
+
+            pasteHandler.pasteAreaElement.addEventListener('paste', pasteHandler.handlePaste);
+            pasteHandler.activationButtonElement.classList.add("activated");
+            pasteHandler.activationButtonElement.textContent = "HTML paste ON";
+        },
+
+        deactivate: function () {
+
+            pasteHandler.pasteAreaElement.removeEventListener("paste", pasteHandler.handlePaste);
+            pasteHandler.activationButtonElement.classList.remove("activated");
+            pasteHandler.activationButtonElement.textContent = "HTML paste OFF";
+        },
 
 
 		/**
@@ -81,19 +102,10 @@ function PasteHandler(printerPreviewElement, pasteAreaElement) {
 
 				return pasteContent;
 			}
-		},
-
-		/**
-		 * Fill the printer preview element with the paste area content
-		 *
-		 */
-		refreshPrinterPreview: function () {
-
-			pasteHandler.printerPreviewElement.innerHTML = pasteHandler.pasteAreaElement.value;
 		}
 	};
 
-	pasteHandler.init(printerPreviewElement, pasteAreaElement);
+	pasteHandler.init(pasteAreaElement, activationButtonElement);
 
 	return pasteHandler;
 }
