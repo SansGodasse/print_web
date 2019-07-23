@@ -1,7 +1,7 @@
 <?php
 ob_start();
 ?>
-<header id="printer-header">
+<header class="not-printable" id="printer-header">
     <h1>Web printer</h1>
 </header>
 <?php
