@@ -1,0 +1,48 @@
+body {
+	margin: 0;
+}
+
+#base-content {
+	margin: auto;
+	max-width: 1000px;
+}
+
+#printer-header {
+	background-color: #2C3E50;
+	color: whitesmoke;
+	text-align: center;
+	padding: 20px 0;
+}
+
+#paste-area {
+	width: 100%;
+	height: 400px;
+	margin-top: 20px;
+}
+
+.printer-commands {
+	margin: 20px;
+	max-width: 200px;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-row-gap: 10px;
+}
+
+.btn {
+	padding: 5px;
+	border-radius: 0.25rem;
+	border: none;
+	background-color: darkslategrey;
+	color: whitesmoke;
+}
+
+.btn:hover {
+	cursor: pointer;
+	background-color: dodgerblue;
+}
+
+@media print {
+	.not-printable {
+		display: none;
+	}
+}
