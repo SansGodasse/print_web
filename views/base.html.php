@@ -8,7 +8,7 @@
 
         <title>Print web content</title>
 
-        <link href=/css/style.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
         <link href="/css/web_printer.css" rel="stylesheet" />
     </head>
     

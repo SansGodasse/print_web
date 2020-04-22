@@ -44,5 +44,6 @@ body {
 @media print {
 	.not-printable {
 		display: none;
+		height: 0px;
 	}
 }
